@@ -1,46 +1,87 @@
-list_of_numbers = []
-multiplexing = 1
+def work_with_list():
+    s = []
+    n = int(input())
+    s.append(n)
+    while n != 0:
+        n = int(input())
+        s.append(n)
+    return s[:-1]
 
 
-def max_quantity(list_of_number):
-    count = 0
-    max_value = max(list_of_number)
-    for i in list_of_numbers:
-        if i == max_value:
-            count += 1
-    return count
+working_list = work_with_list()
 
 
-def oddeven(list_of_numbers):
-    even = 0
-    odd = 0
-    for i in list_of_numbers:
+def get_len_of_list(working_list):
+    print(f'Count: {len(working_list)}')
+
+
+get_len_of_list(working_list)
+
+
+def sum_of_list(working_list):
+    print(f'Sum all numb: {sum(working_list)}')
+
+
+sum_of_list(working_list)
+
+
+def multiply_list(working_list):
+    m = 1
+    for i in working_list:
+        m *= i
+    print(f'Composition: {m}')
+
+
+multiply_list(working_list)
+
+
+def average_of_list(working_list):
+    print(f'AVG: {sum(working_list) // len(working_list)}')
+
+
+average_of_list(working_list)
+
+
+def max_of_list(working_list):
+    print(f'Position of the maximum value in the list: {working_list.index(max(working_list)) + 1}')
+    print(f'Maximum value in the list: {max(working_list)}')
+
+
+max_of_list(working_list)
+
+
+def chet_nechet_of_list(working_list):
+    chet = 0
+    nechet = 0
+    for i in working_list:
         if i % 2 == 0:
-            even += 1
-        if i % 2 != 0:
-            odd += 1
-    return odd, even
+            chet += 1
+        else:
+            nechet += 1
+    print(f'Even: {chet}, odd: {nechet}')
 
 
-while True:
-    input_data = int(input('Enter your number. Number 0 will finish the program: '))
-    list_of_numbers.append(input_data)
-    max_number = max(list_of_numbers)
-    odd, even = oddeven(list_of_numbers)
-    unique_list = list(set(list_of_numbers))
-    unique_list.sort()
-    unique_list.reverse()
+chet_nechet_of_list(working_list)
 
-    if input_data != 0:
-        multiplexing = multiplexing * input_data
-    if input_data == 0:
-        print(f'Quantity of elements: {len(list_of_numbers)-1}')
-        print(f'Sum of entered numbers: {sum(list_of_numbers)}')
-        print(f'Product of numbers: {multiplexing}')
-        print(f'Average value: {sum(list_of_numbers)/(len(list_of_numbers)-1)}')
-        print(f'Max value in the list: {max_number}')
-        print(f'Index number of max value: {list_of_numbers.index(max_number) + 1}')
-        print(f'Odd numbers {odd}, even numbers {even}')
-        print(f'Premax value: {unique_list[1]}')
-        print(f'Quantity of max elements: {max_quantity(list_of_numbers)}')
-        break
+
+def sec_max_num(working_list):
+    copy_of_list = list(set(working_list))
+    for i in copy_of_list:
+        if i == max(copy_of_list):
+            del copy_of_list[copy_of_list.index(i)]
+    print(f'Second largest number: {max(copy_of_list)}')
+
+
+sec_max_num(working_list)
+
+
+def count_of_max(working_list):
+    count = 0
+    m = max(working_list)
+    for i in working_list:
+        if i == m:
+            count += 1
+    print(f'Maximum numbers: {count}')
+
+
+count_of_max(working_list)

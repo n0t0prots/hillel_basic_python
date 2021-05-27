@@ -1,5 +1,9 @@
-import math
-x = input('Quantity km in a first day?')
-y = input('How many kilometres  have run in total?')
-day = (int(y)/int(x))**(10/11)
-print(math.ceil(day))
+x = input('input start length:')
+y = input('input length to find a day:')
+x = float(x)
+y = float(y)
+day = 1
+while x < y:
+    x = x + x / 10
+    day = day + 1
+print("Need:", day)

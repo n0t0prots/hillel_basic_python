@@ -1,8 +1,9 @@
-number_a = int(input('Enter your first number: '))
-number_b = int(input('Enter your second number: '))
-if number_a < number_b:
-    for sequence in range(number_a, number_b+1):
-        print(sequence)
+a = int(input("input a: "))
+b = int(input("input b: "))
+
+if a < b:
+    for i in range(a, b + 1):
+        print(i)
 else:
-    for i in range(number_a, number_b-1, -1):
+    for i in range(a, b - 1, -1):
         print(i)
