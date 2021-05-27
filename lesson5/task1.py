@@ -1,19 +1,18 @@
-num = int(input('Enter the number until 1000:'))
+from cmath import sqrt
 
 
-def is_prime():
-    n = 2
-    if num in (1, 2):
-        res = 'Prime number'
-    else:
-        while n < num:
-            if num % n != 0:
-                res = 'Prime number'
-            else:
-                res = 'Not prime number'
-                break
-            n += 1
-    print(res)
+def is_prime(number):
+    # Все четные числа кроме 2 непростые
+    if number % 2 == 0 and number != 2:
+        return False
+    # 0 и 1 не являются простыми
+    if number == 0 or number == 1:
+        return False
+    # Перебираем числа от 3 до корня из введенного, шаг - 2
+    for n in range(3, int(sqrt(number).real) + 1, 2):
+        if number % n == 0:  # Если число делится нацело, то оно непростое
+            return False
+    return True  # Остальные числа простые
 
-
-is_prime()
+n = int(input('Введите число: '))
+print(is_prime(n))

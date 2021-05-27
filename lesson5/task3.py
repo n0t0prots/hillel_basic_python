@@ -1,12 +1,10 @@
-a = int(input('Enter side a: '))
-b = int(input('Enter side b: '))
-fig = input('If square enter Y, If triangle enter N ')
+def area_square(a):
+    print(a ** 2)
 
-square_1 = a * b
-triangle_1 = a * b / 2
-if fig == 'Y':
-    print('Area of square: ', square_1)
-elif fig == 'N':
-    print('Area of triangle: ', triangle_1)
-else:
-    print('You enter the wrong!')
+
+def area_triangle(h, a):
+    print(int(0.5 * a * h))
+
+
+area_square()
+area_triangle()

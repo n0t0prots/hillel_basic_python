@@ -1,16 +1,12 @@
-a = int(input('Enter the side of square: '))
-t = []
+def square(a):
+    p = 4 * a
+    s = a * a
+    d = (a ** 2) / 2
+    d = d ** 0.5
+
+    k = (p, s, d)
+
+    return k
 
 
-def square():
-    per = a * 4
-    t.append(per)
-    sq = a ** 2
-    t.append(sq)
-    diag = a * 2 ** (1 / 2)
-    t.append(round(diag))
-    tp = tuple(t)
-    print(tp)
-
-
-square()
+print(square(16))

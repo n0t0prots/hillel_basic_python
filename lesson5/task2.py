@@ -1,7 +1,6 @@
-str = input('Enter string')
-count_words = 1
-list = str.split()
-words = len(list)
-
-print('words: ', words)
-print('Symbols: ', len(str))
+s = "Какой-то текст"
+syms = len(s) # число символов
+syms2 = len(s) - s.count(' ') # число символов без пробелов
+words = s.count(' ') + 1 # число слов
+print('Количество символов: ', syms2)
+print('Количество слов: ', words)

@@ -1,12 +1,12 @@
-str = input('Enter the integer:')
-list = str.split()
-n = 0
-newlist = []
-for x in list:
-    if int(x) % 2 != 0:
-        newlist.append(x)
-    elif int(x) % 2 == 0:
-        newlist.append('0')
-        n += 1
-print(newlist)
-print('Number of integer', n)
+from random import randint
+
+listOrigin = [randint(1, 10) for i in range(10)]
+listMask = []
+for i in listOrigin:
+    if int(i) % 2 == 0:
+        listMask.append(i)
+    else:
+        listMask.append(0)
+
+print(listOrigin)
+print(listMask)

@@ -1,9 +1,13 @@
-from datetime import datetime, date
+from datetime import date
 
-den = int(input('Enter the day: '))
-month = int(input('Enter the month: '))
-year = int(input('Enter the year(format 1967): '))
-try:
-    print(date(year, month, den))
-except:
-    print('Wrong date!')
+
+def foo(y, m, d):
+    try:
+        date(y, m, d)
+        return True
+    except:
+        return False
+
+
+print(foo(2018, 2, 28))
+print(foo(2018, 2, 29))
