@@ -1,10 +1,12 @@
-def area_square(a):
-    print(a ** 2)
+a = int(input('enter a:'))
+b = int(input('enter b:'))
+fig = input('for quadratic - Y, triangle - N ')
 
-
-def area_triangle(h, a):
-    print(int(0.5 * a * h))
-
-
-area_square()
-area_triangle()
+qdr = a * b
+tria = a * b / 2
+if fig == 'N':
+    print('square tria: ', tria)
+elif fig == 'Y':
+    print('square qdr: ', qdr)
+else:
+    print('Wrong enter')

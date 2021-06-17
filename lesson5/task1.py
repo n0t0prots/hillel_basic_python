@@ -1,18 +1,10 @@
-from cmath import sqrt
+def is_prime(x):
+    if x % 2 == 0:
+        return x == 2
+    divider = 3
+    while divider <= x**0.5 and x % divider != 0:
+        divider += 2
+    return divider > x**0.5
 
 
-def is_prime(number):
-    # Все четные числа кроме 2 непростые
-    if number % 2 == 0 and number != 2:
-        return False
-    # 0 и 1 не являются простыми
-    if number == 0 or number == 1:
-        return False
-    # Перебираем числа от 3 до корня из введенного, шаг - 2
-    for n in range(3, int(sqrt(number).real) + 1, 2):
-        if number % n == 0:  # Если число делится нацело, то оно непростое
-            return False
-    return True  # Остальные числа простые
-
-n = int(input('Введите число: '))
-print(is_prime(n))
+print(is_prime())
