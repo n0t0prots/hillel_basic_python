@@ -1,21 +1,32 @@
-def forecast_of_weather():
-    import requests
-    import datetime
-    API_KEY = 'f9ada9efec6a3934dad5f30068fdcbb8'
-    name_of_city = 'Odessa'
-    cnt = 5
-    request = requests.get('http://api.openweathermap.org/data/2.5/forecast/daily?', params={'q': name_of_city, 'cnt': cnt, 'appid': API_KEY})
-    data = request.json()
-    date_start = datetime.datetime.now().strftime('%d-%m-%Y') + '-' + str(name_of_city) + ' ' + str(cnt) + 'days-forecast.txt'
-    weather_f = open(date_start, 'w')
-    weather_f.write('date: \t\t day:\t night:\t feels like(day):\t feels like(night): \n')
-    for data_list in data['list']:
-        weather_f.write(str(datetime.datetime.fromtimestamp(data_list['dt']).strftime('%d-%m-%Y')) + '\t')
-        weather_f.write(str(data_list['temp']['day']) + '\t')
-        weather_f.write(str(float(data_list['temp']['night'])) + '\t\t')
-        weather_f.write(str(data_list['feels_like']['day']) + '\t\t\t\t')
-        weather_f.write(str(data_list['feels_like']['night']) + '\n')
-    weather_f.close()
+import urllib.request
+from json import load
+import datetime
 
 
-forecast_of_weather()
+def getting_parameters():
+    city = str(input('Введите название города: ').lower())
+    days = str(input('Введите количество дней: '))
+    return city, days
+
+
+def read_link(city, days):
+    link = urllib.request.urlopen(f"http://api.openweathermap.org/data/2.5/forecast/daily?q={city}&cnt={days}&units=metric&appid=f9ada9efec6a3934dad5f30068fdcbb8")
+    res = load(link)
+
+    return res
+
+
+def add_to_file(res):
+    with open('19-09-2020-Odessa-5-days-weather-forecast.txt', 'w', encoding='utf-8') as file:
+        file.write(str(f"""Погода для города {city.title()}:
+Дата         Температура днем   Температура ночью   По ощущениям  """))
+        for i in res['list']:
+            file.write(datetime.datetime.fromtimestamp(i['dt']).strftime("\n%d-%m-%Y   "))
+            file.write((str(i['temp']['day'])).ljust(19))
+            file.write((str(i['temp']['night'])).ljust(20))
+            file.write(str(i['feels_like']['day']))
+
+
+city, days = getting_parameters()
+res = read_link(city, days)
+add_to_file(res)
