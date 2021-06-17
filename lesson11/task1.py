@@ -1,8 +1,11 @@
-def football_points():
-    w = int(input('Number of wins:'))
-    d = int(input('Number of draws:'))
-    l = int(input('Number of loses:'))
-    counter = w * 3 + d * 1 + l * 0
-    return counter
+win = int(input('Enter the number of wins: '))
+draw = int(input('Enter the number of draws: '))
+loss = int(input('Enter the number of defeats: '))
 
-print(football_points())
+
+def result(w, d, l):
+    list = [w * 3, d, l * 0]
+    return sum(list)
+
+
+print(result(win, draw, loss))

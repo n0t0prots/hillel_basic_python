@@ -1,23 +1,12 @@
-def longest_word():
-    s = input('Enter your sentence:')
-    l = len(s)
-    m = 0
-    ind = 0
-    count = 0
-    for i in range(l):
-        if s[i] != ' ':
-            count += 1
-        else:
-            if count > m:
-                m = count
-                ind = i - count
-            count = 0
-
-    if count > m:
-        m = count
-        ind = i - count + 1
-
-    print(s[ind:ind + m])
+string = "What makes a good man"
 
 
-longest_word()
+def longest():
+    lengthlist = []
+    wordlist = string.split(' ')
+    for word in wordlist:
+        lengthlist.append(int(len(word)))
+    return wordlist[lengthlist.index(max(lengthlist))]
+
+
+print(longest())
