@@ -1,51 +1,35 @@
-import random
-import pprint
+from random import randint
 
 
 class City:
-    def __init__(self):
-        self.streets = []
+    def __init__(self, name, streets=[]):
+        self.name = name
+        self.streets = streets
 
-    def street_creator(self):
-        for i in range(random.randint(0, 10)):
+    def generate(self):
+        for i in range(randint(20, 40)):
             self.streets.append(Street(i))
-
-    @property
-    def population(self):
-        population = 0
-        for street in self.streets:
-            for house in street.houses:
-                population += house.people
-
-        return population
-
-    def fin_list(self):
-        finlist = []
-        for street in self.streets:
-            for house in street.houses:
-                finlist.append([street.idd, house.idd, House(house).people])
-
-        return finlist
+        for i in self.streets:
+            i.generate()
 
 
 class Street:
-    def __init__(self, idd):
-        self.houses = []
-        self.houses_creator()
-        self.idd = idd
+    def __init__(self, name, houses=[]):
+        self.name = name
+        self.houses = houses
 
-    def houses_creator(self):
-        for i in range(random.randint(5, 20)):
+    def generate(self):
+        for i in range(randint(5, 20)):
             self.houses.append(House(i))
+        for i in self.houses:
+            i.generate
 
 
 class House:
-    def __init__(self, idd):
-        self.people = random.randint(1, 100)
-        self.idd = idd
+    def __init__(self, name, people=0):
+        self.name = name
+        self.people = people
 
+    def generate(self):
+        self.people = randint(1, 100)
 
-odessa = City()
-odessa.street_creator()
-print('Population: {}'.format(odessa.population))
-pprint.pprint(odessa.fin_list())
