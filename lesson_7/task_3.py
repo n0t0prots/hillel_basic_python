@@ -17,7 +17,7 @@ def read_link(city, days):
 
 
 def add_to_file(res):
-    with open('19-09-2020-Odessa-5-days-weather-forecast.txt', 'w', encoding='utf-8') as file:
+    with open(datetime.datetime.now().strftime('%d-%m-%Y') + '-' + str(city) + ' ' + str(days) + 'days-forecast.txt', 'w', encoding='utf-8') as file:
         file.write(str(f"""Погода для города {city.title()}:
 Дата         Температура днем   Температура ночью   По ощущениям  """))
         for i in res['list']:
